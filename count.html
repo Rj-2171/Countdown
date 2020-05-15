@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Count</title>
+    <!-- <link rel="stylesheet" href="jquery.countdown.css"> -->
+    <style type="text/css">
+        /* body{
+            min-height: 600px;
+            padding: 200px 0 0;
+            overflow: hidden;
+            font: 14px/1.3 'tahoma',Arial,sans-serif;
+        } */
+        /* /* #note{
+            color: #666666;
+            font-size: 12px;
+            margin: 0 auto;
+            padding: 4px;
+            text-align: center;
+            text-shadow: 1px 1px 0 rgba(255,255,255,0.3);
+            width: 400px;
+        } */
+        #countdown{ 
+	font-family: sans-serif; 
+	color: #fff; 
+	display: inline-block; 
+	font-weight: 50; 
+	text-align: center; 
+	font-size: 15px; 
+} 
+#countdown > div{ 
+	padding: 5px; 
+	border-radius: 3px; 
+	background:#000804; 
+	display: inline-block; 
+} 
+#countdown div > span{ 
+	padding: 8px; 
+	border-radius: 1px; 
+	background:#412273; 
+	display: inline-block; 
+} 
+.smalltext{ 
+	padding-top: 5px; 
+	font-size: 10px; 
+} 
+    </style>
+  </head> 
+<body>
+    <div id="countdown">
+        <div> 
+            <span class="hours" id="hour"></span>
+            <div class="smalltext">Hours</div> 
+        </div> 
+        <div> 
+            <span class="minutes" id="minute"></span> 
+            <div class="smalltext">Minutes</div> 
+        </div> 
+        <div> 
+            <span class="seconds" id="second"></span>
+            <div class="smalltext">Seconds</div> 
+        </div> 
+    </div>
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script> -->
+    <!-- <script src="jquery.countdown.js"></script> -->
+    <script>
+       
+       // $(function(){
+        //     var note = $('#note'),
+        //     ts= new Date("May 10, 2020 3:00:00"),
+        //     newYear = true;
+        //     if((new Date())>ts)
+        //     {
+        //         ts= (new Date().getTime()) + 10*24*60*1000;
+        //         newYear= false;
+
+        //     }
+        //     $('#countdown').countdown({
+        //         timestamp : ts,
+        //         callback :function(days,hours,minutes,seconds){
+        //             var message="";
+        //             message+=  days + "day" + (days==1?'':'s')+", ";
+        //             message+=  hours + "hour" + (hours==1?'':'s')+", ";
+        //             message+=  minutes + "minute" + (minutes==1?'':'s')+" and ";
+        //             message+=  seconds + "second" + (seconds==1?'':'s')+" left ";
+        //             note.html(message);
+
+        //         }
+        //     });
+        // }); -->
+
+        
+        var deadline = new Date("May 15, 2020 5:30:00").getTime(); 
+
+var x = setInterval(function() { 
+
+var now = new Date().getTime(); 
+var t = deadline - now; 
+// var days = Math.floor(t / (1000 * 60 * 60 * 24)); 
+var hours = Math.floor((t%(1000 * 60 * 60 * 24))/(1000 * 60 * 60)); 
+var minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60)); 
+var seconds = Math.floor((t % (1000 * 60)) / 1000); 
+// document.getElementById("day").innerHTML =days ; 
+document.getElementById("hour").innerHTML =hours; 
+document.getElementById("minute").innerHTML = minutes; 
+document.getElementById("second").innerHTML =seconds; 
+if (t < 0) { 
+		clearInterval(x); 
+		document.getElementById("note").innerHTML = "TIME UP"; 
+		// document.getElementById("day").innerHTML ='0'; 
+		document.getElementById("hour").innerHTML ='0'; 
+		document.getElementById("minute").innerHTML ='0' ; 
+		document.getElementById("second").innerHTML = '0'; } 
+}, 1000); 
+    </script>
+</body>
+</html>
